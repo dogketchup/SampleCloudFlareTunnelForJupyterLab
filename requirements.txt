@@ -1,0 +1,11 @@
+jupyterlab
+numpy
+scipy
+sympy
+matplotlib
+pandas
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision
+torchaudio
+
