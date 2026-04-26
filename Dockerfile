@@ -1,4 +1,5 @@
 #FROM python:3.9-slim
+#FROM nvidia/cuda:12.0-base
 FROM python:3.11-slim
 
 # Set environment variables to prevent .pyc files and enable buffering
