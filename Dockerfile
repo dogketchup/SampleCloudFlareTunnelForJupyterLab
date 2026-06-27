@@ -40,6 +40,11 @@ RUN conda run --live-stream -n myenv pip install -vvv --no-cache-dir -r requirem
 RUN conda install -n myenv --solver=libmamba -c conda-forge xeus-cling notebook -y && \
     conda clean -afy
 RUN pip install opencv-python nvcc4jupyter
+RUN pip install mujoco
+RUN pip install mujoco-warp
+RUN pip install --force-reinstall babel jupyterlab-server
+
+
 
 WORKDIR /app
 #mount venv to venv in docker compose
@@ -54,6 +59,8 @@ RUN chown -R dockerUser:dockerUser /app/projects
 USER dockerUser
 WORKDIR /app/projects
 
-EXPOSE 8888
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
+EXPOSE 8888
+EXPOSE 8889
+
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "jupyter", "lab", "--ip=0.0.0.0", "--port=8889", "--no-browser"]
